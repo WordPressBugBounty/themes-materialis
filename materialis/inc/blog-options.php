@@ -127,8 +127,10 @@ function materialis_add_blog_options( $section ) {
 	) );
 
 }
+add_action('init', function() {
+    materialis_add_blog_options( 'blog_settings' );
+});
 
-materialis_add_blog_options( 'blog_settings' );
 
 
 function materialis_show_post_meta_setting_filter( $value ) {

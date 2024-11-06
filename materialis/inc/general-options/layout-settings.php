@@ -73,8 +73,10 @@ function materialis_add_layout_options()
         ),
     ));
 }
+add_action('init', function() {
+    materialis_add_layout_options();
+});
 
-materialis_add_layout_options();
 
 
 function materialis_page_content_atts_boxed_layout_content($attrs)

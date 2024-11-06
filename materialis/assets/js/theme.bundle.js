@@ -5109,10 +5109,44 @@ if (location.hash) {
   }
 
   if (window.wp && window.wp.customize) {
-    $('.dropdown-menu').parent('div').parent().on('DOMNodeInserted DOMNodeRemoved', function (event) {
-      getAnchors();
-      doneScrolling();
-    });
+    var targetNode = $('.dropdown-menu').parent('div').parent()[0];
+    var config = {
+      childList: true,
+      subtree: true
+    };
+
+    var callback = function callback(mutationsList, observer) {
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = mutationsList[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var mutation = _step.value;
+
+          if (mutation.type === 'childList') {
+            getAnchors();
+            doneScrolling();
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    };
+
+    var observer = new MutationObserver(callback);
+    observer.observe(targetNode, config);
   }
 
   window.scrollToSection = scrollToSection;
@@ -5421,7 +5455,10 @@ if (location.hash) {
       return;
     }
 
-    var top = $cart_button.offset().top + $cart_button.outerHeight() - $cart_button.closest('div').offset().top;
+    var navBar = $('.navigation-bar');
+    var paddingBottom = navBar.css('padding-bottom');
+    var navBarHeight = navBar.get(0).getBoundingClientRect().height;
+    var top = navBarHeight - parseFloat(paddingBottom);
     var position =
     /*$menu.closest('[data-sticky]') ? "fixed" :*/
     "absolute";

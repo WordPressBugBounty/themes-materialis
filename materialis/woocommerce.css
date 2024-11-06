@@ -6142,6 +6142,37 @@ form.woocommerce-ordering {
   margin: 0px 10px;
 }
 
+/* temp fix: https://mantis.iconvert.pro/view.php?id=56171 */
+
+.wp-core-ui .button,
+.wp-core-ui .button-secondary {
+  color: var(--wp-admin-theme-color-darker-10);
+}
+
+#publish-settings {
+  width: 30px;
+  min-width: auto;
+  height: 30px;
+  color: white;
+  border: none;
+  border-width: 0;
+}
+
+#publish-settings::before {
+  top: 0;
+  background-color: transparent;
+  left: 0;
+  opacity: 1;
+  width: 30px;
+  height: 30px;
+  content: "\F111";
+  font-family: "dashicons";
+  color: white;
+  transition: none;
+}
+
+/* end */
+
 .woocommerce-page {
   background-color: #f8f8f8;
   background-image: url(#) !important;

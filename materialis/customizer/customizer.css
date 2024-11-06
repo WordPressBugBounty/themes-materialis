@@ -1158,6 +1158,22 @@ ul#sub-accordion-section-header_layout.open {
 }
 
 /*CUSTOMIZER ICONS*/
+li#accordion-section-header_layout h3:before {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    font-family: dashicons;
+    text-decoration: inherit;
+    font-weight: 400;
+    font-style: normal;
+    vertical-align: top;
+    text-align: center;
+    content: "\f100";
+    vertical-align: middle;
+    margin-right: 6px;
+    display: inline-block;
+    line-height: 1rem;
+}
 
 li#accordion-section-header_layout {
     margin-bottom: 1rem;
@@ -1180,23 +1196,6 @@ li#accordion-section-header_layout {
 
 #customize-controls li#accordion-section-header_layout > h3:after {
     color: #ffffff;
-}
-
-li#accordion-section-header_layout h3:before {
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
-    font-family: dashicons;
-    text-decoration: inherit;
-    font-weight: 400;
-    font-style: normal;
-    vertical-align: top;
-    text-align: center;
-    content: "\f100";
-    vertical-align: middle;
-    margin-right: 6px;
-    display: inline-block;
-    line-height: 18px;
 }
 
 /*WEB GRADIENTS*/
@@ -1646,3 +1645,42 @@ li.category-title.closeable {
 .customize-control-kirki-checkbox input[type=checkbox]:checked:before, .customize-control-kirki-multicheck input[type=checkbox]:checked:before, .customize-control-repeater input[type=checkbox]:checked:before {
     line-height: 1;
 }
+
+/* WP 6.7 fixes */
+.customize-pane-parent {
+    overflow-x: hidden !important;
+}
+
+#customize-controls .control-section.accordion-section .accordion-section-title button {
+    box-sizing: border-box;
+}
+#customize-controls .control-section.accordion-section .accordion-section-title button:hover,
+#customize-controls .control-section.accordion-section .accordion-section-title button:focus {
+    color: inherit;
+    background-color: transparent;
+}
+#accordion-panel-page_content_panel h3::after {
+    display: none !important;
+    visibility: hidden;
+}
+
+li#accordion-section-header_layout:has(button) h3::before {
+    display: none;
+}
+
+li#accordion-section-header_layout button:before {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    font-family: dashicons;
+    text-decoration: inherit;
+    font-weight: 400;
+    font-style: normal;
+    vertical-align: top;
+    text-align: center;
+    content: "\f100";
+    display: inline-block;
+    line-height: 20px;
+    margin-right: .5rem;
+}
+/* end */

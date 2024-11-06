@@ -327,7 +327,7 @@ if ( ! class_exists( 'ariColor' ) ) {
 			}
 			// Sanitize color
 			$this->hex = sanitize_hex_color( maybe_hash_hex_color( $this->color ) );
-			$hex = ltrim( $this->hex, '#' );
+			$hex = ltrim( $this->hex ? $this->hex : "", '#' );
 			// Make sure we have 6 digits for the below calculations
 			if ( 3 == strlen( $hex ) ) {
 				$hex = ltrim( $this->hex, '#' );

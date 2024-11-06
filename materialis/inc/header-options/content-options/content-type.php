@@ -947,18 +947,30 @@ function materialis_front_page_header_content_options($section, $prefix, $priori
                 'value'  => 'content-on-center',
                 'fields' => array(
                     'header_text_box_text_align' => 'center',
+                    'header_spacing'             => array(
+	                    'top'    => '20%',
+	                    'bottom' => '24%',
+                    ),
                 ),
             ),
             array(
                 'value'  => 'content-on-right',
                 'fields' => array(
                     'header_text_box_text_align' => 'right',
+                    'header_spacing'             => array(
+	                    'top'    => '20%',
+	                    'bottom' => '24%',
+                    ),
                 ),
             ),
             array(
                 'value'  => 'content-on-left',
                 'fields' => array(
                     'header_text_box_text_align' => 'left',
+                    'header_spacing'             => array(
+	                    'top'    => '20%',
+	                    'bottom' => '24%',
+                    ),
                 ),
             ),
             array(

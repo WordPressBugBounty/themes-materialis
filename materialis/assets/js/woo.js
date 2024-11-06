@@ -114,7 +114,11 @@
             return;
         }
 
-        var top = $cart_button.offset().top + $cart_button.outerHeight() - $cart_button.closest('div').offset().top ;
+        const navBar = $('.navigation-bar');
+        const paddingBottom =  navBar.css('padding-bottom');
+        const navBarHeight = navBar.get(0).getBoundingClientRect().height;
+        const top = navBarHeight - parseFloat(paddingBottom) ;
+
         var position = /*$menu.closest('[data-sticky]') ? "fixed" :*/ "absolute";
 
         if ($cart_button.offset().left < $cart.outerWidth()) {

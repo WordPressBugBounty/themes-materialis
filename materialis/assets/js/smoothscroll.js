@@ -308,10 +308,22 @@ if (location.hash) {
     }
 
     if (window.wp && window.wp.customize) {
-        $('.dropdown-menu').parent('div').parent().on('DOMNodeInserted DOMNodeRemoved', function (event) {
-            getAnchors();
-            doneScrolling();
-        });
+        const targetNode = $('.dropdown-menu').parent('div').parent()[0];
+
+        const config = { childList: true, subtree: true };
+
+        const callback = function(mutationsList, observer) {
+            for(const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    getAnchors();
+                    doneScrolling();
+                }
+            }
+        };
+
+        const observer = new MutationObserver(callback);
+
+        observer.observe(targetNode, config);
     }
 
     window.scrollToSection = scrollToSection;

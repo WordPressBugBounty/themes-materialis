@@ -126,9 +126,9 @@ class RowsListControl extends BaseControl {
 		if ( is_array( $data ) ) {
 			$data = $this->filterArrayDefaults( $data );
 		} else {
-			$data = str_replace( '[tag_companion_uri]', get_template_directory_uri(), $data );
-			$data = str_replace( '[tag_theme_uri]', get_template_directory_uri(), $data );
-			$data = str_replace( '[tag_style_uri]', get_stylesheet_directory_uri(), $data );
+			$data = str_replace( '[tag_companion_uri]', get_template_directory_uri(), $data ? $data : "" );
+			$data = str_replace( '[tag_theme_uri]', get_template_directory_uri(), $data ? $data : "" );
+			$data = str_replace( '[tag_style_uri]', get_stylesheet_directory_uri(), $data ? $data : "" );
 		}
 
 		return $data;
